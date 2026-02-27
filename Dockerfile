@@ -36,5 +36,9 @@ RUN mkdir -p /root/.nanobot
 # Gateway default port
 EXPOSE 18790
 
+# Copy Coolify entrypoint
+COPY coolify-entrypoint.sh /usr/local/bin/coolify-entrypoint.sh
+RUN sed -i 's/\r$//' /usr/local/bin/coolify-entrypoint.sh && chmod +x /usr/local/bin/coolify-entrypoint.sh
+
 ENTRYPOINT ["nanobot"]
 CMD ["status"]
